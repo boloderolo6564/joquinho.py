@@ -18,7 +18,7 @@ root.resizable(False, False)
 
 data_save = ler()
 
-frame_principal = tk.Frame(root)
+frame_principal = tk.Frame(root,bg="#1C1616")
 frame_principal.pack(fill="both", expand=True)
 
 frame_lateral = tk.Frame(frame_principal, width=200,bg="#46D4D1")
@@ -55,7 +55,7 @@ for index, (item, price) in enumerate(zip(data_save["store"]["itens"], data_save
     index +=1
     label = tk.Label(scrollable_frame, text=item, bg="#d0ffd0")
     label.grid(row=index, column=0, sticky="ew", padx=5, pady=5)
-    button = tk.Button(scrollable_frame, text=price)
+    button = tk.Button(scrollable_frame, text=price,command=lambda:compra(data_save,item))
     button.grid(row=index, column=1, sticky="ew", padx=5, pady=5)
 
 
@@ -68,7 +68,7 @@ scrollable_frame.grid_columnconfigure(1, weight=1)
 label = tk.Label(frame_principal,bg="#46D4D1",)
 label.place(x=0, y=0, width=66, height=35)
 
-button = tk.Button(frame_principal,bg="#26A8DB", text='Clique-me', command=lambda:clicado(data_save))
+button = tk.Button(frame_principal,bg="#26A8DB", text='Clique-me', command=lambda:clicado(data_save,data_save["usuario"]["power"]))
 button.place(x=136, y=153, width=139, height=120)
 
 atualizar_pontos()
