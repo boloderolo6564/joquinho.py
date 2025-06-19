@@ -11,5 +11,6 @@ class rebirth:
         try:
             with open("database/savegame.json","w") as arquivo:
                 json.dump(data_save, arquivo)
+                return data_save
         except FileExistsError:
             pass  

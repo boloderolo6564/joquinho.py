@@ -28,12 +28,14 @@ class usuario:
             pass
     def rebirthupgrade(self,save_data):
         rebirth = save_data["usuario"]["rebirth"]
+        rebirth_require= save_data["Rebirth"]["require"]
         print("tentando alterar dados")
         try:
             with open("database/database+store.json", "r") as arquivo:
                 novo_save = json.load(arquivo)
                 save_data = novo_save
                 save_data["usuario"]["rebirth"] += rebirth + 1
+                save_data["Rebirth"]["require"] = rebirth_require
                 print("dados alterados")
                 return save_data
         except:

@@ -47,7 +47,7 @@ class interface:
         self.scrollable_frame.grid_columnconfigure(1, weight=1)
 
         self.label = tk.Label(self.frame_principal,bg="#46D4D1",)
-        self.label.place(x=0, y=0, width=66, height=35)
+        self.label.place(x=0, y=0, width=136, height=35)
 
         self.button = tk.Button(self.frame_principal,bg="#26A8DB", text='Clique-me', command=lambda:self.clicar(self.data_save))
         self.button.place(x=136, y=153, width=139, height=120)
@@ -62,9 +62,9 @@ class interface:
         resposta = messagebox.askyesno("Rebirth", f"Você precisa de {data_save["Rebirth"]["require"]} pontos ?")
         if resposta:
            if (self.rebirth.verificarebirth(self,data_save)):
-               data_save = self.usuario.rebirthupgrade(data_save)
-               if(data_save is not None):
-                    self.data_save = self.rebirth.aumentarequire(self,data_save)
+               this_save = self.usuario.rebirthupgrade(data_save)
+               if(this_save is not None):
+                    data_save = self.rebirth.aumentarequire(self,this_save)
                     self.atualizarpontos()
                     self.atualizarstore()
                         
