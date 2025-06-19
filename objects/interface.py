@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import ttk  
 class interface:
     def __init__(self,root,usuario,store,data_save,rebirth):
         self.root = root
@@ -49,17 +50,19 @@ class interface:
         self.label = tk.Label(self.frame_principal,bg="#46D4D1",)
         self.label.place(x=0, y=0, width=136, height=35)
 
-        self.button = tk.Button(self.frame_principal,bg="#26A8DB", text='Clique-me', command=lambda:self.clicar(self.data_save))
+        self.button = tk.Button(self.frame_principal, text='Clique-me',bg = "#26A8DB",activebackground= "#46D4D1",relief="raised",bd=5,  command=lambda:self.clicar(self.data_save ))
         self.button.place(x=136, y=153, width=139, height=120)
 
         self.buttonRebirth = tk.Button(self.frame_principal,text = "REBIRTH", bg = "#659291", command=lambda:self.confirmar_rebirth(self.data_save))
         self.buttonRebirth.place(x=0, y=35, width=66, height=35)
 
-
+        self.labelstore = tk.Label(self.frame_principal,text= "STORE -->",bg="#46D4D1",)
+        self.labelstore.place(x=304, y=0, width=96, height=35)
+       
         self.atualizarpontos()
         pass
     def confirmar_rebirth(self,data_save):
-        resposta = messagebox.askyesno("Rebirth", f"Você precisa de {data_save["Rebirth"]["require"]} pontos ?")
+        resposta = messagebox.askyesno("Rebirth", f"Você precisa de {data_save["Rebirth"]["require"]:.1f} pontos ?")
         if resposta:
            if (self.rebirth.verificarebirth(self,data_save)):
                this_save = self.usuario.rebirthupgrade(data_save)
