@@ -64,17 +64,20 @@ class interface:
     def confirmar_rebirth(self,data_save):
         resposta = messagebox.askyesno("Rebirth", f"You need {data_save["Rebirth"]["require"]:.1f} points to Rebirth. Do you want to proceed?")
         if resposta:
-           if (self.rebirth.verificarebirth(self,data_save)):
-               this_save = self.usuario.rebirthupgrade(data_save)
-               if(this_save is not None):
+            if (self.rebirth.verificarebirth(self,data_save)):
+                this_save = self.usuario.rebirthupgrade(data_save)
+                if(this_save is not None):
                     data_save = self.rebirth.aumentarequire(self,this_save)
-                    self.atualizarpontos()
-                    self.atualizarstore()
-                        
-                        
-                        
-                   
-
+                    if(data_save):
+                        messagebox.showinfo("Rebirth","Rebirth was successful")
+                        self.atualizarpontos()
+                        self.atualizarstore()
+                    else: 
+                        messagebox.showinfo("Rebirth","ERROR!!!!")
+                else: 
+                    messagebox.showinfo("Rebirth","ERROR")
+            else: 
+                messagebox.showinfo("Rebirth", "Not enough points")
         else:
             print("user denied.")
 
@@ -115,6 +118,6 @@ class interface:
             self.usuario.upgrade(self.data_save,index)
             self.atualizarstore()
         else:
-            print("Not enough points")
+            messagebox.showinfo("STORE","Not enough points")
     def atualizardados(self,):
         self.root.after(200, self.atualizarpontos)
