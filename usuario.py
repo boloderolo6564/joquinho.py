@@ -34,6 +34,7 @@ class usuario:
                 novo_save = json.load(arquivo)
                 save_data = novo_save
                 save_data["usuario"]["rebirth"] += rebirth + 1
+                print("dados alterados")
                 return save_data
         except:
             pass

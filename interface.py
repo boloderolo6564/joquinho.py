@@ -63,10 +63,10 @@ class interface:
         if resposta:
            if (self.rebirth.verificarebirth(self,data_save)):
                data_save = self.usuario.rebirthupgrade(data_save)
-               if(data_save):
-                    if(self.rebirth.aumentarequire(self,data_save)):
-                        self.atualizarpontos()
-                        self.atualizarstore()
+               if(data_save is not None):
+                    self.data_save = self.rebirth.aumentarequire(self,data_save)
+                    self.atualizarpontos()
+                    self.atualizarstore()
                         
                         
                         
@@ -115,15 +115,3 @@ class interface:
             print("pontos insuficientes")
     def atualizardados(self,):
         self.root.after(200, self.atualizarpontos)
-
-
-
-
-
-
-
-
-
-
-
-
