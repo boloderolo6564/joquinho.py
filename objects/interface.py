@@ -108,6 +108,7 @@ class interface:
         self.data_save = self.usuario.carregardados()
         self.label.config(text=f"Points: {self.data_save["user"]["points"]:.1f}")
         self.root.after(200, self.atualizarpontos)
+        
     def on_configure(self,event):
         self.canvas_width = event.width
         self.canvas.itemconfig(self.window_id, width=self.canvas_width)
