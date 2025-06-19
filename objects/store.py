@@ -9,7 +9,7 @@ class store:
                     data_save["usuario"]["pontos"] -= data_save["store"]["price"][index]
                     data_save["store"]["price"][index] *= 1.5
                     try:
-                        with open("savegame.json", "w") as arquivo:
+                        with open("database/savegame.json", "w") as arquivo:
                             json.dump(data_save, arquivo)
                     except FileExistsError:
                         pass
