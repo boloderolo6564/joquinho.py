@@ -4,7 +4,7 @@ class rebirth:
 
         pass
     def verificarebirth(self,data_save):
-        if(data_save["usuario"]["pontos"]>=data_save["Rebirth"]["require"]):
+        if(data_save["user"]["points"]>=data_save["Rebirth"]["require"]):
             return True
     def aumentarequire(self,data_save):
         data_save["Rebirth"]["require"] *= 1.5

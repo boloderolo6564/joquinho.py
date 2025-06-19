@@ -50,7 +50,7 @@ class interface:
         self.label = tk.Label(self.frame_principal,bg="#46D4D1",)
         self.label.place(x=0, y=0, width=136, height=35)
 
-        self.button = tk.Button(self.frame_principal, text='Clique-me',bg = "#26A8DB",activebackground= "#46D4D1",relief="raised",bd=5,  command=lambda:self.clicar(self.data_save ))
+        self.button = tk.Button(self.frame_principal, text='Click-me',bg = "#26A8DB",activebackground= "#46D4D1",relief="raised",bd=5,  command=lambda:self.clicar(self.data_save ))
         self.button.place(x=136, y=153, width=139, height=120)
 
         self.buttonRebirth = tk.Button(self.frame_principal,text = "REBIRTH", bg = "#659291", command=lambda:self.confirmar_rebirth(self.data_save))
@@ -62,7 +62,7 @@ class interface:
         self.atualizarpontos()
         pass
     def confirmar_rebirth(self,data_save):
-        resposta = messagebox.askyesno("Rebirth", f"Você precisa de {data_save["Rebirth"]["require"]:.1f} pontos ?")
+        resposta = messagebox.askyesno("Rebirth", f"You need {data_save["Rebirth"]["require"]:.1f} points to Rebirth. Do you want to proceed?")
         if resposta:
            if (self.rebirth.verificarebirth(self,data_save)):
                this_save = self.usuario.rebirthupgrade(data_save)
@@ -76,7 +76,7 @@ class interface:
                    
 
         else:
-            print("Usuário cancelou.")
+            print("user denied.")
 
     def clicar(self,data_save):
         self.usuario.adicionarpontos(data_save)
@@ -103,7 +103,7 @@ class interface:
         self.root.after(1000, self.atualizarstore)
     def atualizarpontos(self,):
         self.data_save = self.usuario.carregardados()
-        self.label.config(text=f"Pontos: {self.data_save["usuario"]["pontos"]:.1f}")
+        self.label.config(text=f"Points: {self.data_save["user"]["points"]:.1f}")
         self.root.after(200, self.atualizarpontos)
     def on_configure(self,event):
         self.canvas_width = event.width
@@ -115,6 +115,6 @@ class interface:
             self.usuario.upgrade(self.data_save,index)
             self.atualizarstore()
         else:
-            print("pontos insuficientes")
+            print("Not enough points")
     def atualizardados(self,):
         self.root.after(200, self.atualizarpontos)
